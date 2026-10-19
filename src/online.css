@@ -1,1 +1,27 @@
 .login{max-width:720px;margin:36px auto}.login h1{font-size:clamp(36px,6vw,64px);margin:24px 0}.login .hands{font-size:52px;letter-spacing:12px;margin:20px 0}.login .primary{background:white;display:inline-flex;align-items:center;gap:14px}.login .google{font:700 22px Arial;color:#4285f4}.login .notice{color:#193c2f}.account-name{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lobby-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.invite-form{max-width:600px}.invite-form input,.invite-link{width:100%;border:1px solid #ccd8c7;border-radius:10px;padding:13px;margin:10px 0 16px;font:inherit}.status-bar{display:flex;gap:15px;align-items:center;margin:20px 0;font-size:14px;color:#667a6a}.error{background:#ffede7;color:#983d25}.pending-actions{margin-top:20px}.duel-names{font-size:clamp(27px,4vw,43px)}.online-foot{margin-top:30px}.text-input{color:#233e30}.lobby-card h2{overflow-wrap:anywhere}.profile-name{overflow-wrap:anywhere}.online-title{display:flex;justify-content:space-between;gap:15px;align-items:center}.invite-note{font-size:14px;color:#708076}.fighter-name{max-width:200px;overflow-wrap:anywhere}.sync-failed{color:#983d25}@media(max-width:600px){.lobby-grid{grid-template-columns:1fr}.account-name{max-width:100px}.account{gap:6px}.account .secondary{padding:8px}.online-title{display:block}.login{margin:12px auto}.login .hands{font-size:42px}.fighters{gap:18px}.fighter-name{max-width:110px}.status-bar{flex-wrap:wrap}}
+
+.calendar-panel{margin:22px 0 28px;padding:clamp(14px,3vw,24px)}
+.calendar-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+.calendar-heading h3{margin:0 0 5px}
+.calendar-heading p{margin:0;font-size:14px}
+.calendar-nav{display:flex;align-items:center;gap:10px;text-transform:capitalize}
+.calendar-nav strong{min-width:130px;text-align:center}
+.calendar-nav button{min-width:38px;padding:8px 12px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.calendar-weekdays{margin-bottom:7px;text-align:center;color:#708076;font-size:12px;font-weight:700}
+.cal-day{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;min-width:0;min-height:54px;padding:7px 2px;border:1px solid #e1e8df;border-radius:10px;background:#fff;color:#233e30;font:inherit;cursor:pointer}
+.cal-day span{font-size:14px;font-weight:650}
+.cal-day i,.legend-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d6ddd3}
+.cal-day.win i,.legend-dot.win{background:#299764}
+.cal-day.loss i,.legend-dot.loss{background:#d84d4d}
+.cal-day.pending i,.legend-dot.pending{background:#e3ad27}
+.cal-day.today{outline:2px solid #438bd1;outline-offset:1px}
+.cal-day.today i,.legend-dot.today{background:#438bd1}
+.cal-day.picked{border-color:#193c2f;background:#edf5e9}
+.cal-day.outside{opacity:.45}
+.cal-day.future{color:#a5afa5;background:#f6f8f5;cursor:not-allowed;border-style:dashed}
+.cal-day.future i{background:#e1e6df}
+.calendar-legend{display:flex;gap:14px 18px;flex-wrap:wrap;margin-top:18px;font-size:12px;color:#667a6a}
+.calendar-legend span{display:inline-flex;align-items:center;gap:6px}
+.calendar-hint{font-size:13px;margin:15px 0}
+@media(max-width:600px){.calendar-heading{align-items:flex-start;flex-direction:column}.calendar-nav{width:100%;justify-content:space-between}.calendar-nav strong{flex:1}.calendar-grid{gap:4px}.cal-day{min-height:43px;border-radius:8px}.cal-day span{font-size:13px}.calendar-legend{gap:10px 12px}}
