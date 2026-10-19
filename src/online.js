@@ -32,7 +32,7 @@ function calendarView(){
  const days=Array.from({length:42},(_,i)=>{const d=shift(start,i),m=byDate.get(d),future=d>state.today,outside=d.slice(0,7)!==base;let mark='none',label='Sin partida';
  if(future){mark='future';label='Fecha futura bloqueada'} else if(m?.status==='resolved'){mark=m.winner===session.user.id?'win':'loss';label=m.winner===session.user.id?'Victoria':'Derrota'} else if(m&&(Object.values(m.submitted||{}).some(Boolean)||m.rounds?.length||m.bet)){mark='pending';label='Partida pendiente'}
  if(d===state.today)label+=' · Hoy';
- return '<button class="cal-day '+mark+(outside?' outside':'')+(d===date?' picked':'')+(d===state.today?' today':'')+'" data-date="'+d+'" '+(future?'disabled':'')+' aria-label="'+escape(fmt(d)+': '+label)+'" title="'+escape(label)+'"><span>'+Number(d.slice(8))+'</span>'+(awardDates.has(d)?'<b class="cal-award" aria-label="Medalla especial">🏆</b>':'')+'<i></i></button';
+ return '<button class="cal-day '+mark+(outside?' outside':'')+(d===date?' picked':'')+(d===state.today?' today':'')+'" data-date="'+d+'" '+(future?'disabled':'')+' aria-label="'+escape(fmt(d)+': '+label)+'" title="'+escape(label)+'"><span>'+Number(d.slice(8))+'</span>'+(awardDates.has(d)?'<b class="cal-award" aria-label="Medalla especial">🏆</b>':'')+'<i></i></button>';
  }).join('');
  const monthLabel=new Intl.DateTimeFormat('es-CL',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(base+'-15T12:00:00Z'));
  const prev=shift(base+'-01',-1).slice(0,7), next=shift(base+'-01',32).slice(0,7);
