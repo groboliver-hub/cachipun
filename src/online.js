@@ -27,12 +27,12 @@ function home(){const pendingMatches=state?state.matches.filter(m=>m.date<=state
 function calendarView(){
  const base=calendarMonth||state.today.slice(0,7);
  const first=base+'-01', dow=(new Date(first+'T12:00:00Z').getUTCDay()+6)%7, start=shift(first,-dow);
- const names=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], byDate=new Map(state.matches.map(m=>[m.date,m]));
+ const names=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], byDate=new Map(state.matches.map(m=>[m.date,m])), awardDates=new Set(duelStats(state).commemoratives.map(a=>a.date));
  const pending=state.matches.filter(m=>m.date<=state.today&&m.status!=='resolved'&&(Object.values(m.submitted||{}).some(Boolean)||m.rounds?.length||m.bet)).length;
  const days=Array.from({length:42},(_,i)=>{const d=shift(start,i),m=byDate.get(d),future=d>state.today,outside=d.slice(0,7)!==base;let mark='none',label='Sin partida';
  if(future){mark='future';label='Fecha futura bloqueada'} else if(m?.status==='resolved'){mark=m.winner===session.user.id?'win':'loss';label=m.winner===session.user.id?'Victoria':'Derrota'} else if(m&&(Object.values(m.submitted||{}).some(Boolean)||m.rounds?.length||m.bet)){mark='pending';label='Partida pendiente'}
  if(d===state.today)label+=' · Hoy';
- return '<button class="cal-day '+mark+(outside?' outside':'')+(d===date?' picked':'')+(d===state.today?' today':'')+'" data-date="'+d+'" '+(future?'disabled':'')+' aria-label="'+escape(fmt(d)+': '+label)+'" title="'+escape(label)+'"><span>'+Number(d.slice(8))+'</span><i></i></button>';
+ return '<button class="cal-day '+mark+(outside?' outside':'')+(d===date?' picked':'')+(d===state.today?' today':'')+'" data-date="'+d+'" '+(future?'disabled':'')+' aria-label="'+escape(fmt(d)+': '+label)+'" title="'+escape(label)+'"><span>'+Number(d.slice(8))+'</span>'+(awardDates.has(d)?'<b class="cal-award" aria-label="Medalla especial">🏆</b>':'')+'<i></i></button';
  }).join('');
  const monthLabel=new Intl.DateTimeFormat('es-CL',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(base+'-15T12:00:00Z'));
  const prev=shift(base+'-01',-1).slice(0,7), next=shift(base+'-01',32).slice(0,7);
