@@ -5,8 +5,7 @@ export function duelStats(state){
  return {users:{[a]:s.users.oliver,[b]:s.users.valentina},owners:Object.fromEntries(Object.entries(s.owners).map(([n,id])=>[n,real(id)])),record:{...s.record,owner:s.record.owner?real(s.record.owner):null},commemoratives:s.commemoratives.map(m=>({...m,owner:real(m.owner)}))};
 }
 export function currentDate(state){
- const finished=state.matches.find(m=>m.resolvedOn===state.today);
- if(finished)return finished.date;
- return state.matches.filter(m=>m.status==='open'&&m.date<=state.today&&(m.rounds.length||m.bet||Object.values(m.submitted).some(Boolean))).sort((a,b)=>a.date.localeCompare(b.date))[0]?.date||state.today;
+ // Cada fecha es independiente: al abrir el duelo, mostrar hoy por defecto.
+ return state.today;
 }
 export function emptyMatch(date,duelId){return {date,duelId,rounds:[],submitted:{},winner:null,status:'open',bet:null}}
